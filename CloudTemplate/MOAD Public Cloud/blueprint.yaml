@@ -1,5 +1,5 @@
 formatVersion: 1
-name: MOAD Public Cloud - Git Sample
+name: MOAD Public Cloud - Git Example
 version: 1
 inputs:
   frontendcount:
