@@ -1,0 +1,16 @@
+---
+exportVersion: "1"
+exportId: "8a5e32d275bb95780175e6a6b6706633"
+name: "IAM Role"
+runtime: "python"
+entrypoint: "handler"
+description: "Cloudwatch"
+inputs:
+  target: "World"
+timeoutSeconds: 600
+deploymentTimeoutSeconds: 900
+actionType: "SCRIPT"
+provider: "aws"
+configuration:
+  const_aws-iam_role: "lambda-basic-role"
+memoryInMB: 300
