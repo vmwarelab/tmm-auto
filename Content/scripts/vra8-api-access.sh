@@ -1,5 +1,3 @@
-root@tkg-jump-box [ ~/vra ]# cat connect-vra.sh
-
 #Assign values to the variables for the hostname of your vRealize Automation appliance,
 #your user name, and your password.
 
