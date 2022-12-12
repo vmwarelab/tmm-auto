@@ -1,6 +1,6 @@
 formatVersion: 1
 name: MOAD VMware Cloud - GitHub Example
-version: 1
+version: 1.1
 inputs:
   frontendcount:
     title: 'No. of Frontend Workloads:'
