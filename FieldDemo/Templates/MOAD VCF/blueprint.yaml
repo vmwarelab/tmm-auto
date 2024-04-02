@@ -1,6 +1,6 @@
 formatVersion: 1
-name: moad-retail-vmware-cloud
-version: 1
+name: MOAD VCF ( GitHub Repo Example)
+version: 1.1
 inputs:
   frontendcount:
     title: "No. of Frontend Workloads:"
