@@ -25,8 +25,7 @@ resources:
         password: ${secret.windows-administrator-password}
       cloudConfig: |
         #cloud-config
-        Rename-Computer "${self.resourceName}"
-        
+
         # Set the built-in Administrator password
         users:
           - default
@@ -42,7 +41,7 @@ resources:
           - path: C:\scripts\install_mssql.ps1
             content: |
               Start-Sleep -Seconds 60
-              
+              Rename-Computer "${self.resourceName}"
               # MSSQL Variables
               $installPath = "C:\mssql-install\setup.exe"
               $params_sql = '/QUIET /IACCEPTSQLSERVERLICENSETERMS /ACTION=Install /PID=${secret.mssql-productkey} /FEATURES=SQL /INSTANCENAME=MSSQLSERVER /INSTANCEID=MSSQLSERVER /AGTSVCACCOUNT="NT Service\SQLSERVERAGENT" /AGTSVCSTARTUPTYPE="Automatic" /SQLSVCSTARTUPTYPE="Automatic" /SQLSVCACCOUNT="NT Service\MSSQLSERVER" /SQLSYSADMINACCOUNTS="BUILTIN\Administrators" /SECURITYMODE="SQL" /SAPWD="${input.password}" /TCPENABLED="1" /NPENABLED="1"'
@@ -57,9 +56,9 @@ resources:
               
               # Silet installation of SQL Management Studio
               Start-Process -FilePath $media_path -ArgumentList $params -Wait
-        
+
         set_hostname: ${self.resourceName}
-        
+
         runcmd:
           - powershell.exe -File C:\scripts\install_mssql.ps1
       networks:
