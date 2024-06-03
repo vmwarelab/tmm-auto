@@ -41,7 +41,9 @@ resources:
           - path: C:\scripts\install_mssql.ps1
             content: |
               Start-Sleep -Seconds 60
+              
               Rename-Computer "${self.resourceName}"
+              
               # MSSQL Variables
               $installPath = "C:\mssql-install\setup.exe"
               $params_sql = '/QUIET /IACCEPTSQLSERVERLICENSETERMS /ACTION=Install /PID=${secret.mssql-productkey} /FEATURES=SQL /INSTANCENAME=MSSQLSERVER /INSTANCEID=MSSQLSERVER /AGTSVCACCOUNT="NT Service\SQLSERVERAGENT" /AGTSVCSTARTUPTYPE="Automatic" /SQLSVCSTARTUPTYPE="Automatic" /SQLSVCACCOUNT="NT Service\MSSQLSERVER" /SQLSYSADMINACCOUNTS="BUILTIN\Administrators" /SECURITYMODE="SQL" /SAPWD="${input.password}" /TCPENABLED="1" /NPENABLED="1"'
