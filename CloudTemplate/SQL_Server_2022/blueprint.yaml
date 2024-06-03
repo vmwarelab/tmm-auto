@@ -25,7 +25,6 @@ resources:
         password: ${secret.windows-administrator-password}
       cloudConfig: |
         #cloud-config
-
         # Set the built-in Administrator password
         users:
           - default
@@ -41,8 +40,6 @@ resources:
           - path: C:\scripts\install_mssql.ps1
             content: |
               Start-Sleep -Seconds 60
-              
-              Rename-Computer "${self.resourceName}"
               
               # MSSQL Variables
               $installPath = "C:\mssql-install\setup.exe"
@@ -60,7 +57,6 @@ resources:
               Start-Process -FilePath $media_path -ArgumentList $params -Wait
 
         set_hostname: ${self.resourceName}
-
         runcmd:
           - powershell.exe -File C:\scripts\install_mssql.ps1
       networks:
