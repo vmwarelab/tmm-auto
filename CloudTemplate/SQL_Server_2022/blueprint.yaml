@@ -25,6 +25,7 @@ resources:
         password: ${secret.windows-administrator-password}
       cloudConfig: |
         #cloud-config
+        set_hostname: ${self.resourceName}
         # Set the built-in Administrator password
         users:
           - default
@@ -55,8 +56,7 @@ resources:
               
               # Silet installation of SQL Management Studio
               Start-Process -FilePath $media_path -ArgumentList $params -Wait
-
-        set_hostname: ${self.resourceName}
+              
         runcmd:
           - powershell.exe -File C:\scripts\install_mssql.ps1
       networks:
